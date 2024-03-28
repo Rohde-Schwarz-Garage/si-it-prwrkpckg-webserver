@@ -142,7 +142,7 @@ sudo systemctl enable nginx
 ```
 
 
-Der Webserver ist nun vollfunktionsfähig und einsatzbereit. Wenn du auf dem Raspberry Pi arbeitest, kannst du die Website im Browser anzeigen lassen, indem du `localhost` in die Adressleiste eingibst. Befindest du dich auf einem anderen im Netzwerk befindlichen Rechner, benötigst du die **IP-Adresse** des Pis. Wie du diese herausfindest, ist in der [Raspberry-Pi-Anleitung](../../../ge-it-prwrkpckg-raspberrypi#ssh) im Abschnitt SSH beschrieben.
+Der Webserver ist nun vollfunktionsfähig und einsatzbereit. Wenn du auf dem Raspberry Pi arbeitest, kannst du die Website im Browser anzeigen lassen, indem du `localhost` in die Adressleiste eingibst. Befindest du dich auf einem anderen im Netzwerk befindlichen Rechner, benötigst du die **IP-Adresse** des Pis. Wie du diese herausfindest, ist in der [Raspberry-Pi-Anleitung](../../../ge-it-prwrkpckg-raspberrypi#ip-adresse-herausfinden) im Abschnitt SSH beschrieben.
 
 Die URL zum Öffnen der Seite lautet also `http://localhost` bzw. `http://<ip>`.
 
