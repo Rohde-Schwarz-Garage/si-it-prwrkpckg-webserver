@@ -1,16 +1,8 @@
 # Webserver - Die andere Seite des Internets
 
-```csharp
-if (readDocuments.ContainsAll({
-    "Einleitungsdokument",
-    "RaspberryPi"
-})) {
-    continue;
-} else {
-    return;
-}
+Dieses Projekt ist Teil des [Pre-Work-Pakets](../../../collection-it-prwrkpckg).
 
-```
+Zum besseren Verständnis empfehlen wir, vorher die Einführung für den [Raspberry Pi](../../../ge-it-prwrkpckg-raspberrypi) durchzuarbeiten.
 
 ## Inhaltsverzeichnis
 
@@ -32,7 +24,18 @@ Der zugrundeliegende Ablauf beim Aufrufen von Webseiten ist simpel: Der Browser 
 
 Um die Kommunikation zwischen Browser und Server zu vereinheitlichen kommt bei Webseiten das HTTP (Hypertext Transfer Protocol) zum Einsatz. Versucht der Browser, eine Website zu erreichen, sendet er eine sogenannte GET-Request an den angegebenen Webserver (beispielsweise google.com). Dieser sendet dann auf Basis der Request eine Antwort, die den Inhalt der Website darstellt.
 
-Heutzutage wird meist HTTPS verwendet. Dabei handelt es sich um eine Erweiterung des HTTP Protokolls um Sicherheitsfunktionalität (S für *S*ecure). Die Website, die du im Laufe dieser Anleitung aufsetzen wirst, verwendet HTTP.
+Heutzutage wird meist HTTPS verwendet. Dabei handelt es sich um eine Erweiterung des HTTP Protokolls um Sicherheitsfunktionalität (S steht für *S*ecure). Die Website, die du im Laufe dieser Anleitung aufsetzen wirst, verwendet HTTP.
+
+## Domains
+
+Jeder Server hat im Internet eine eindeutige IP-Adresse. Damit man sich nicht die IP-Adressen von jedem einzelnen Server, den man aufrufen möchte, merken muss, wurde das Domain Name System (DNS) eingeführt. Im DNS kann man sich eindeutige [Domain-Namen](https://en.wikipedia.org/wiki/Domain_name) reservieren, die dann von DNS-Servern in die jeweiligen IP-Adressen aufgelöst werden. 
+
+Sie erleichtern die Navigation im Internet erheblich, da man sich nicht die IP-Adressen der einzelnen Server merken muss, sondern einfach den Domainnamen in die Adresszeile des Browsers eingeben kann. 
+
+
+Domains können zum Beispiel folgendermaßen aussehen:
+- example.com
+- blog.example.de
 
 ## Uniform Resource Locator (URL)
 
@@ -57,7 +60,7 @@ URLs können in vier Teile aufgeteilt werden:
 
 ## Aufbau einer Website mit HTML
 
-Websites verwenden heutzutage die Skriptsprache **HTML** (Hypertext Markup Language).
+Websites verwenden heutzutage **HTML** (Hypertext Markup Language).
 Mit dieser Sprache kann man schnell einfache Websites erstellen. So könnte der Quellcode einer möglichen Website aussehen:
 
 ```html
@@ -80,20 +83,20 @@ Und so sieht die Seite im Browser aus:
 
 ![Image](rsc/BasicWebsite.png)
 
-Betrachten wir den Quellcode einmal genauer: HTML setzt sich aus Elementen zusammen. Diese werden von Start-Tags (`<tag>`) und End-Tags (`</tag>`) begrenzt. Der Inhalt der Elemente befindet sich zwischen den beiden. Gibt es keinen Inhalt, kann man Start- und End-Tag auch kombinieren (`<tag/>`).
+Betrachten wir den Quellcode einmal genauer: HTML setzt sich aus Elementen zusammen. Diese werden von Start-Tags (`<tag>`) und End-Tags (`</tag>`) begrenzt. Der Inhalt der Elemente befindet sich zwischen den beiden. Bei manchen Tags, die keinen Inhalt erwarten, kann man den End-Tag weglassen (siehe \<br>).
 
 
 | Aspekt     | Beschreibung |
 |---|---|
 | \<!DOCTYPE html> | Dieser Tag ist speziell. Er teilt dem Browser mit, dass HTML als Sprache verwendet wird (muss am Anfang jeder Website stehen).|
-| \<html><br/>\</html> | Das ist das Root-Element, das in jedem Dokument vorkommen muss. Es umschließt die gesamte Webseite. |
-| \<head><br/>\</head> | In diesem Element befinden sich Meta-Informationen, wie beispielsweise der Seitentitel. |
-| \<title><br/>\</title> | Hiermit gibt man den Titel der Seite an (sichtbar in der Tab-Kachel des Browsers). |
-| \<body><br/>\</body> | Dieses Element beinhaltet den **sichtbaren** Inhalt der Website. |
-| \<h1><br/>\</h1> | Der Text, der sich zwischen diesen beiden Tags befindet, wird als Überschrift dargestellt.
-| \<p><br/>\</p> | Befindet sich Text zwischen zwei \<p>-Tags, wird er als Paragraph dargestellt (und hat einen vertikalem Abstand zu anderen Elementen).
-| \<br/> | Dieser Tag bringt den Browser dazu, an dieser Stelle einen Zeilenumbruch einzufügen.
-| \<a href="[url]"><br/>\</a> | Alles, was sich in diesem Element befindet, wird als Link dargestellt. Klickt ein Benutzer mit der Maus darauf, wird er auf die bei "href" angegebene Website weitergeleitet. |
+| \<html><br>\</html> | Das ist das Root-Element, das in jedem Dokument vorkommen muss. Es umschließt die gesamte Webseite. |
+| \<head><br>\</head> | In diesem Element befinden sich Meta-Informationen, wie beispielsweise der Seitentitel. |
+| \<title><br>\</title> | Hiermit gibt man den Titel der Seite an (sichtbar in der Tab-Kachel des Browsers). |
+| \<body><br>\</body> | Dieses Element beinhaltet den **sichtbaren** Inhalt der Website. |
+| \<h1><br>\</h1> | Der Text, der sich zwischen diesen beiden Tags befindet, wird als Überschrift dargestellt.
+| \<p><br>\</p> | Befindet sich Text zwischen zwei \<p>-Tags, wird er als Paragraph dargestellt (und hat einen vertikalem Abstand zu anderen Elementen).
+| \<br> | Dieser Tag bringt den Browser dazu, an dieser Stelle einen Zeilenumbruch einzufügen.
+| \<a href="[url]"><br>\</a> | Alles, was sich in diesem Element befindet, wird als Link dargestellt. Klickt ein Benutzer mit der Maus darauf, wird er auf die bei "href" angegebene Website weitergeleitet. |
 
 
 **Hinweis**: Browser können Websites auch ohne \<!DOCTYPE html>, \<html>, \<head> und \<body> anzeigen. Sie fügen die fehlenden Tags einfach automatisch ein. Um aber Interpretationsfehler auf Seiten des Browsers zu vermeiden, sollten diese Tags immer vorhanden sein.
@@ -110,12 +113,12 @@ Um mehr über CSS zu erfahren kannst du dir [hier](https://www.w3schools.com/css
 
 ## Programmieren mit JavaScript
 
-Mit HTML und CSS kann man Webseiten darstellen und dabei schön aussehen lassen. Um aber mehr mit einer Website interagieren zu können verwenden Webentwickler heutzutage in den meisten Fällen JavaScript. Wenn es dich interessiert, wie genau man mit JavaScript programmieren kann, kannst du [hier](https://www.w3schools.com/js/default.asp) mehr erfahren.
+Mit HTML und CSS kann man Webseiten darstellen und dabei schön aussehen lassen. Um aber mehr mit einer Website interagieren zu können verwenden Webentwickler in den den meisten Fällen JavaScript, dessen Erweiterung TypeScript oder ganze Frameworks, die die Entwicklung von Webseiten vereinfachen. Für Anfänger ist es aber ratsam, mit JavaScript anzufangen, da so ein Grundverständnis für die Webentwicklung erlangt werden kann. Wenn es dich interessiert, wie man mit JavaScript programmieren kann, kannst du [hier](https://www.w3schools.com/js/default.asp) mehr erfahren. 
 
 
 ## Installation eines Webservers auf dem Raspberry Pi
 
-Es gibt verschiedene Anwendungen, die als Webserver fungieren. Wir verwenden auf dem [Raspberry Pi](<../Raspberry Pi/>) **nginx**. Dabei handelt es sich um einen kostenlosen, quelloffenen HTTP-Server, der für ca. ein Drittel aller Websites im Internet verwendet wird. Im Folgenden erfährst du, wie du nginx auf dem Raspberry Pi aufsetzen kannst.
+Es gibt verschiedene Anwendungen, die als Webserver fungieren. Wir verwenden auf dem [Raspberry Pi](../../../ge-it-prwrkpckg-raspberrypi) **nginx**. Dabei handelt es sich um einen kostenlosen, quelloffenen HTTP-Server, der für ca. ein Drittel aller Websites im Internet verwendet wird. Im Folgenden erfährst du, wie du nginx auf dem Raspberry Pi aufsetzen kannst.
 
 Als erstes benötigst du das Terminal. Hier gibst du den folgenden Befehl ein:
 ```bash
@@ -139,19 +142,16 @@ sudo systemctl enable nginx
 ```
 
 
-Der Webserver ist nun vollfunktionsfähig und einsatzbereit. Wenn du auf dem Raspberry Pi arbeitest, kannst du die Website im Browser anzeigen lassen, indem du `localhost` in die Adressleiste eingibst. Befindest du dich auf einem anderen im Netzwerk befindlichen Rechner, benötigst du die **IP-Adresse** des Pis.
-Mit dem folgenden Konsolenbefehl kannst du sie herausfinden:
-```bash
-hostname -I
-```
+Der Webserver ist nun vollfunktionsfähig und einsatzbereit. Wenn du auf dem Raspberry Pi arbeitest, kannst du die Website im Browser anzeigen lassen, indem du `localhost` in die Adressleiste eingibst. Befindest du dich auf einem anderen im Netzwerk befindlichen Rechner, benötigst du die **IP-Adresse** des Pis. Wie du diese herausfindest, ist in der [Raspberry-Pi-Anleitung](../../../ge-it-prwrkpckg-raspberrypi#ip-adresse-herausfinden) im Abschnitt SSH beschrieben.
 
 Die URL zum Öffnen der Seite lautet also `http://localhost` bzw. `http://<ip>`.
 
 > **Zusätzliche Informationen: Ports**<br>
-> Computer verwenden beim Zugriff auf das Internet Ports. 
-> Jedes Programm, das sich mit dem Internet verbinden möchte, belegt einen Port des Hostsystems. Insgesamt gibt es 65535 Port-Nummern.
-> HTTP-Webserver verwenden standardmäßig Port 80, HTTPS-Server Port 443. Hostet man Webseiten nicht auf den Standardports, muss der verwendete Port in der URL angegeben werden: `http://<domain/ip>:<Portnummer>`.
-> 
+> Computer verwenden beim Zugriff auf das Internet Ports. Insgesamt gibt es 65535 davon. 
+> Um sich mit dem Internet verbinden zu können, belegt eine Anwendung einen Port (teilweise auch mehrere).  
+> Man kann sich Ports wie Türen vorstellen, die die Anwendungen öffnen, um auf Datenpakete zu warten oder selbst welche zu versenden.
+> Nur Nachrichten, die an den richtigen Port gerichtet sind, kommen auch bei der Anwendung an.  
+> HTTP-Webserver verwenden standardmäßig Port 80, HTTPS-Server Port 443. Hostet man Webseiten nicht auf den Standardports, muss der verwendete Port in der URL angegeben werden: `http://<domainname/ip>:<Portnummer>`.
 
 
 ## Einstellen einer Website
@@ -163,7 +163,7 @@ Bei der Installation von nginx wurde automatisch eine vorkonfigurierte Website e
 nginx verwendet als Webseitenordner den Ordner `/var/www/html`, der automatisch erstellt wurde. Standardmäßig findest du hier die Datei `index.nginx-debian.html`, die eine vorgefertigte Begrüßungsseite enthält.
 
 Wenn du im Browser eine URL eingibst, kannst du den Dateipfad und den Dateinamen (`http://example.com/test.html`) im Pfad-Teil angeben. Dann wird beispielsweise der Inhalt der Datei `var/www/html/test.html` vom Webserver zurückgesendet.
-Gibst du keinen Dateinamen, also beispielsweise nur `http://example.com` an, antwortet der Webserver automatisch mit dem Inhalt der Datei mit dem Namen `index.html` (oder eine Variation davon; siehe oben). Findet der Server keine Datei mit diesem Namen, gilt die Seite als Not Found (Error Code 404).
+Gibst du keinen Dateinamen, also beispielsweise nur `http://example.com` an, antwortet der Webserver automatisch mit dem Inhalt der Datei mit dem Namen `index.html` (oder eine Variation davon, wie z. B. `index.nginx-debian.html`). Findet der Server keine Datei mit diesem Namen, gilt die Seite als Not Found (Error Code 404).
 
 ### Bearbeiten der Website
 
