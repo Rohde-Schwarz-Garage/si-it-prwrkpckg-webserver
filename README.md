@@ -81,7 +81,7 @@ Mit dieser Sprache kann man schnell einfache Websites erstellen. So könnte der 
 
 Und so sieht die Seite im Browser aus:
 
-![Image](rsc/BasicWebsite.png)
+![Image](img/BasicWebsite.png)
 
 Betrachten wir den Quellcode einmal genauer: HTML setzt sich aus Elementen zusammen. Diese werden von Start-Tags (`<tag>`) und End-Tags (`</tag>`) begrenzt. Der Inhalt der Elemente befindet sich zwischen den beiden. Bei manchen Tags, die keinen Inhalt erwarten, kann man den End-Tag weglassen (siehe \<br>).
 
